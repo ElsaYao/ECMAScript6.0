@@ -17,6 +17,7 @@
 
     console.log(score);
     console.log(result2);
+    
     </script>
 </body>
 </html>
