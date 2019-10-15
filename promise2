@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://zntf.zhuge.com/lib/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+    //let p=$.ajax({url:"data/arr.txt",dataType:'json'});
+    //console.log(p);
+    Promise.all([
+        $.ajax({url:'data/arr.txt', dataType: "json"}),
+        $.ajax({url:'data/json.txt', dataType: "json"})
+    ]).then(function(results){
+        let [arr,json]=results;
+        alert('success');
+        console.log(results);
+    },function(){
+        alert('fail')
+    })
+    </script>
+</body>
+</html>
