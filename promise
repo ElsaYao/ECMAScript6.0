@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://zntf.zhuge.com/lib/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+    function createPromise(url){
+        return new Promise(function(resolve,rejecct){
+           $.ajax({
+               url,
+               dataType:'json',
+               success(arr){
+                   resolve(arr);
+               },
+               error(err){
+                   reject(err);
+               }
+           })
+        })
+    }
+
+    Promise.all([
+      createPromise('data/arr.txt'),
+      createPromise('data/json.txt')
+    ]).then(function(arr){
+        alert('全都成功');
+        console.log(arr)
+    },function(){
+        alert('至少有一个失败')
+    });
+    </script>
+</body>
+</html>
